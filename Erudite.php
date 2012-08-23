@@ -13,6 +13,7 @@ if( !defined( 'MEDIAWIKI' ) ){
 }
 
 require_once( dirname( dirname( __FILE__ ) ) . '/includes/SkinTemplate.php');
+require_once(dirname( dirname( __FILE__ ) ) . '/LocalSettings.php');
  
 // inherit main code from SkinTemplate, set the CSS and template filter
 class SkinErudite extends SkinTemplate {
@@ -29,9 +30,9 @@ class SkinErudite extends SkinTemplate {
 	}
 	
 	function getMTitle() {
-		//this variable was private, needed to go through getters
-		//return $this->mTitle;
+		parent::getContext()->getTitle()->mNamespace = 'NS_MAIN';
 		return parent::getContext()->getWikipage()->mTitle;
+		//return $this->mTitle;
 	}
 }
 
@@ -95,7 +96,7 @@ class EruditeTemplate extends QuickTemplate {
 	 * outputs a formatted page.
 	 */
 	public function execute() {
-		global $wgRequest, $wgSitename;
+		global $wgRequest, $wgSitename, $wgScriptPath, $wgArticlePath;
 		
 		$this->skin = $this->data['skin'];
 		$mTitle = $this->skin->getMTitle();
@@ -159,10 +160,10 @@ class EruditeTemplate extends QuickTemplate {
 // ]]>
 	</script>
 	<?php print Skin::makeGlobalVariablesScript( $this->data ); ?>
-	<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"><!-- wikibits js --></script>
-	<script src="<?php $this->text('stylepath' ) ?>/common/edit.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"></script> 
+	<!--script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"></script-->
+	<!--script src="<?php $this->text('stylepath' ) ?>/common/edit.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"></script--> 
 	<script src="<?php $this->text('stylepath' ) ?>/common/ajax.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"></script> 
-	<script src="<?php $this->text('stylepath' ) ?>/common/ajaxwatch.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"></script> 
+	<!--script src="<?php $this->text('stylepath' ) ?>/common/ajaxwatch.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"></script--> 
 	 
    </head> 
 <body class="single single-post"> 
@@ -366,6 +367,10 @@ class EruditeTemplate extends QuickTemplate {
  
 </div><!-- #wrapper .hfeed --> 
 <script type="text/javascript">
+var wgScriptPath	= '<?php echo $wgScriptPath; ?>';
+var wgArticlePath	= '<?php echo $wgArticlePath; ?>'; 
+var wgServer		= '<?php echo $wgServer; ?>';
+
 jQuery(window).load(function() {
   jQuery.getJSON(wgScriptPath + '/api.php?action=query&format=json&list=recentchanges&rctype=new&rclimit=5&rcnamespace=0', function(data) {
   	var container = jQuery('#newestPages');
@@ -401,3 +406,7 @@ jQuery(window).load(function() {
 }
 
 ?>
+
+
+
+
