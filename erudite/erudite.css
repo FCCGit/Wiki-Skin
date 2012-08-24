@@ -18,8 +18,12 @@ sub { vertical-align:sub; }
 /* Typography Test */
 body.baseline {background-image:url(/skins/erudite/images/body-bg.png); background-repeat:repeat; background-position:left 20px;}
 
+/* */
+.entry-content{max-width:630px;}
+
 /* Layout. Based on the idea of 960.gs. Sorta. Loosely. */
 #container, #header, #footer-wrap-inner {width:96em; margin:0 auto; position:relative;}
+#header{display:none;}
 #content {width:54em; padding-left:6em; padding-top:2.4em; overflow:hidden;}
 body.single #content, body.page #content {overflow:visible;}
 .sidebar {width:24em; clear:both;}
@@ -49,7 +53,7 @@ a:hover {color:#223; text-decoration:underline;}
 a:active {color:#55f;}
 
 /* Header */
-#header-wrap {background:#333 url(/skins/erudite/images/stripes.png) repeat; margin-bottom:2em; padding:1em 0;}
+#header-wrap {background:#333 repeat; margin-bottom:2em; padding:1em 0;}
 #header h1, #header h1 a {color:#fff; text-decoration:none; line-height:1; margin:0;}
 #blog-description {font-size:1.4em; color:#fff;}
 
@@ -147,7 +151,7 @@ blockquote .after {right:-.5em; bottom:-.55em;}
 .entry-content li ol, .entry-content li ul {margin:.5em 0 0 .5em;}
 .entry-content p:first-child {text-indent:0;}
 body.single .entry-content > p:first-child:first-letter, .first-post .entry-content > p:first-child:first-letter {font-size:4.5em; line-height:.65em;}
-.entry-content > p:first-child:first-letter {font-size:3em; float:left; background:#555 url(/skins/erudite/images/stripes.png) repeat; color:#fff; margin:.05em .1em 0 0; padding:.1em; line-height:.7em;}
+.entry-content > p:first-child:first-letter {font-size:3em; float:left; background:#555 repeat; color:#fff; margin:.05em .1em 0 0; padding:.1em; line-height:.7em;}
 /* Webkit + Hoefler = Odd leading. Or at least different. */
 body.webkit.set-in-hoeflertext .entry-content > p:first-child:first-letter {padding:.2em .1em 0;}
 
@@ -190,7 +194,7 @@ blockquote.epigraph cite {text-align:right; font-size:1.2em; display:block; font
 .home-post hr, .home-post .hr {display:none;}
 
 /* entry meta */
-.entry-meta {position:absolute; top:5.1em; padding-left:2em; width:22em; right:-36em; border-left:1px solid #aaa;}
+.entry-meta {position:absolute; top:5.1em; padding-left:2em; width:22em; right:-20em; border-left:1px solid #aaa;}
 .entry-meta span {display:block; font-size:1.1em; line-height:1.455; padding:.364em 0;}
 .entry-meta a {font-style:italic;}
 .entry-meta .meta-sep {display:none;}

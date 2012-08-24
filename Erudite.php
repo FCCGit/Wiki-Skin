@@ -178,7 +178,7 @@ class EruditeTemplate extends QuickTemplate {
  
 		<div id="access" role="navigation"> 
 			<div class="skip-link"><a href="#content" title="Skip to content">Skip to content</a></div> 
-			<div id="menu">
+			<!--div id="menu">
 
 			<ul id="menu-urs" class="menu">
 				<?php foreach( $this->data['sidebar']['navigation'] as $key => $val ) { ?>
@@ -187,7 +187,7 @@ class EruditeTemplate extends QuickTemplate {
 					</li>
 				<?php } ?>
 			</ul>
-		</div> 
+		</div--> 
 		</div><!-- #access --> 
  
 	</div><!--  #header-wrap -->
